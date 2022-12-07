@@ -6,10 +6,10 @@ const fetch = retryDecorator(fetcher);
 
 const GITHUB_AUTH = process.env["GITHUB_TOKEN"];
 const GITHUB_DISPATCH_URL =
-  "https://api.github.com/repos/jamesmstone/readingList/dispatches";
+  "https://api.github.com/repos/jamesmstone/location/dispatches";
 
 export default (request: VercelRequest, response: VercelResponse) => {
-  const payload = request.body;
+  const payload = { event_type: "l-append", client_payload: request.body };
   fetch(GITHUB_DISPATCH_URL, {
     body: JSON.stringify(payload),
     headers: {
