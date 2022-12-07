@@ -18,8 +18,13 @@ export default (request: VercelRequest, response: VercelResponse) => {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     method: "POST",
-  }).then((githubResponse) => {
-    response.status(githubResponse.status);
-    response.send(githubResponse.body);
-  });
+  })
+    .then((githubResponse) => {
+      response.status(githubResponse.status);
+      return githubResponse.json();
+    })
+    .then((githubResponseJson) => {
+      console.log(githubResponseJson);
+      response.send(githubResponseJson);
+    });
 };
