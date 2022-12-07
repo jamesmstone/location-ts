@@ -1,8 +1,8 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { retryDecorator } from "ts-retry-promise";
-import fetcher from "node-fetch";
+import fetch from "node-fetch";
 
-const fetch = retryDecorator(fetcher);
+// const fetch = retryDecorator(fetcher);
 
 const GITHUB_AUTH = process.env["GITHUB_TOKEN"];
 const GITHUB_DISPATCH_URL =
