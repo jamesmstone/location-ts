@@ -18,9 +18,9 @@ jobs:
           fetch-depth: 0
       - name: add
         env:
-          L_INPUT_JSON: ${{ env.L_INPUT_JSON }}
+          L_INPUT_JSON: ${{ toJSON(github.event.client_payload) }}
         run: |
-          echo "$RL_INPUT_JSON" >> location.jsonl
+          echo "$L_INPUT_JSON" >> location.jsonl
 
       - name: Commit changes
         run: |
