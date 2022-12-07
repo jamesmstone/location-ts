@@ -6,6 +6,7 @@ on:
 
 concurrency:
   group: append-to-location
+  cancel-in-progress: false
 
 jobs:
   append-to-location:
