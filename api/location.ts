@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 
 // const fetch = retryDecorator(fetcher);
 
-const GITHUB_AUTH = process.env["GITHUB_TOKEN"];
+const GITHUB_AUTH = process.env["GITHUB_AUTH"];
 const GITHUB_DISPATCH_URL =
   "https://api.github.com/repos/jamesmstone/location/dispatches";
 
@@ -24,7 +24,6 @@ export default (request: VercelRequest, response: VercelResponse) => {
       return githubResponse.json();
     })
     .then((githubResponseJson) => {
-      console.log(githubResponseJson);
       response.send(githubResponseJson);
     });
 };
