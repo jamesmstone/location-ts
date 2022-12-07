@@ -1,0 +1,19 @@
+{
+  "name": "location",
+  "version": "1.0.0",
+  "private": true,
+  "description": "log",
+
+  "author": "James Stone",
+  "scripts": {
+    "vercel": "vercel dev"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.41.1",
+    "@vercel/node": "^1.12.1",
+    "ts-retry-promise": "^0.6.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  }
+}
