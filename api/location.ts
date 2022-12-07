@@ -21,7 +21,7 @@ export default (request: VercelRequest, response: VercelResponse) => {
   })
     .then((githubResponse) => {
       response.status(githubResponse.status);
-      return githubResponse.json();
+      return githubResponse.text();
     })
     .then((githubResponseJson) => {
       response.send(githubResponseJson);
