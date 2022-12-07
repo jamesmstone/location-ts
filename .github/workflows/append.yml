@@ -1,0 +1,25 @@
+name: Append location
+
+on:
+  repository_dispatch:
+    types: ["rl-append"]
+
+concurrency:
+  group: append-to-reading-list
+
+jobs:
+  append-to-reading-list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - name: Commit changes
+        run: |
+          git config user.email "readinglistauto@jamesst.one"
+          git config user.name "Automatic update"
+          git add .
+          git commit -m "Automated reading list update on $(date)"
+          git push -u origin master
