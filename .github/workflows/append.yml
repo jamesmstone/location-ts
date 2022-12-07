@@ -17,11 +17,11 @@ jobs:
           ref: location
           fetch-depth: 0
       - name: add
-        env: 
+        env:
           L_INPUT_JSON: ${{ env.L_INPUT_JSON }}
         run: |
           echo "$RL_INPUT_JSON" >> location.jsonl
-               
+
       - name: Commit changes
         run: |
           git config user.email "auto-location@jamesst.one"
