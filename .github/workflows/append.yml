@@ -1,0 +1,31 @@
+name: Append location
+
+on:
+  repository_dispatch:
+    types: ["l-append"]
+
+concurrency:
+  group: append-to-location
+
+jobs:
+  append-to-location:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: location
+          fetch-depth: 0
+      - name: add
+        env: 
+          L_INPUT_JSON: ${{ env.L_INPUT_JSON }}
+        run: |
+          echo "$RL_INPUT_JSON" >> location.jsonl
+               
+      - name: Commit changes
+        run: |
+          git config user.email "auto-location@jamesst.one"
+          git config user.name "Automatic update"
+          git add .
+          git commit -m "Automated location update on $(date)"
+          git push -u origin location
