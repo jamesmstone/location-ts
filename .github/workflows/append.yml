@@ -20,7 +20,7 @@ jobs:
         env:
           L_INPUT_JSON: ${{ toJSON(github.event.client_payload) }}
         run: |
-          echo "$L_INPUT_JSON" >> location.jsonl
+          echo "$L_INPUT_JSON" | jq --compact-output . >> location.jsonl
 
       - name: Commit changes
         run: |
