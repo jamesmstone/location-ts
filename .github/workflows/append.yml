@@ -11,6 +11,9 @@ concurrency:
 jobs:
   append-to-location:
     runs-on: ubuntu-latest
+    concurrency:
+      group: append-to-location-job
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v3
